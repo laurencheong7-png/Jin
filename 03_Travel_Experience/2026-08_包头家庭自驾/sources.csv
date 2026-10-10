@@ -1,0 +1,19 @@
+id,type,title,url,publisher,checked_date,supports,status,notes
+SRC-001,weather,包头天气预报,https://www.nmc.cn/publish/forecast/ANM/baotou.html,中央气象台,2026-08-22,当日天气与温度,已核验,出发前继续查看短临降雨
+SRC-002,official,五当召旅游区,https://www.baotou.gov.cn/yxbt/yxbt_yzbt/yzbt_mj/202605/t20260521_910927.html,包头市人民政府,2026-08-22,景区定位与介绍,已核验,
+SRC-003,map,五当召高德地点,https://ditu.amap.com/place/B01D8023U7,高德地图,2026-08-22,地址与坐标,已核验,"40.789928,110.296671"
+SRC-004,map,赛汗塔拉高德地点,https://ditu.amap.com/place/B01D80279X,高德地图,2026-08-22,地址与坐标,已核验,"40.627502,109.903049"
+SRC-005,map,北方兵器城东门,https://www.amap.com/place/B01D8028AK,高德地图,2026-08-22,地址与坐标,已核验,"40.678197,109.880831"
+SRC-006,map,包头古城公交站,https://www.amap.com/place/BV09249175,高德地图,2026-08-22,附近坐标,已核验,"40.646601,110.052355"
+SRC-007,official,包头赵长城段遗址,https://www.nmgqq.com.cn/quqinggailan/neimengguyinxiang/wenwuguji/2017-4-17/10265.html,内蒙古党史方志网,2026-08-22,五当召公路沿线赵长城,已核验,
+SRC-008,official,五当召旅游公路情况,https://www.baotou.gov.cn/zfxxgk/fdzdgknr/fd_jyta/bm/sjtysj/zxta/202506/t20250627_528015.html,包头市人民政府,2026-08-22,雨后道路风险,已核验,
+SRC-009,map-data,OpenStreetMap tiles,https://www.openstreetmap.org/copyright,OpenStreetMap contributors,2026-08-22,静态路线图底图,已核验,ODbL attribution retained
+IMG-001,image,北方兵器城入口,https://dimg04.c-ctrip.com/images/0EQ0x12000dxah4q689E1_W_640_10000.jpg?proc=autoorient,携程,2026-08-22,攻略配图,已下载,仅用于个人旅行攻略
+IMG-002,image,赛汗塔拉城中草原,https://q3.itc.cn/q_70/images03/20250703/a58f8621780e46129c9d04a0a5400c81.png,搜狐内容图片,2026-08-22,攻略配图,已下载,仅用于个人旅行攻略
+IMG-003,image,五当召官方介绍,https://www.baotou.gov.cn/yxbt/yxbt_yzbt/yzbt_mj/202605/t20260521_910927.html,包头市人民政府,2026-08-22,攻略配图来源页,待下载,若无法提取则页面使用文字与地图
+IMG-004,image,包头古城入口,https://dimg04.c-ctrip.com/images/0104u12000855s2dv6340_W_640_10000.jpg?proc=autoorient,携程,2026-08-22,攻略配图,已下载,仅用于个人旅行攻略
+IMG-005,image,赵北长城遗址,https://p1.itc.cn/q_70/images03/20211228/9e3061029bc24b919445f97628300582.jpeg,搜狐内容图片,2026-08-22,攻略配图,已下载,仅用于个人旅行攻略
+IMG-006,image,五当召入口,https://dimg04.c-ctrip.com/images/100e0k000000b5zg81FC4_W_640_10000.jpg?proc=autoorient,携程,2026-08-22,攻略配图,已下载,仅用于个人旅行攻略
+SRC-010,official,国务院关于包头市城市总体规划的批复,http://app.www.gov.cn/govdata/gov/201706/29/407305/article.html,中国政府网,2026-08-22,城市定位与发展背景,已核验,
+SRC-011,official,包头市国民经济和社会发展第十五个五年规划纲要,https://www.baotou.gov.cn/zfxxgk/zfgb/zfgb_2026/dsq_2026/202605/t20260506_902897.html,包头市人民政府,2026-08-22,工业与城市发展定位,已核验,
+SRC-012,official,包头市赵长城段遗址,https://www.nmgqq.com.cn/quqinggailan/neimengguyinxiang/wenwuguji/2017-4-17/10265.html,内蒙古党史方志网,2026-08-22,阴山与边塞历史,已核验,

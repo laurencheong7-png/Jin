@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laura 的地图优先型旅行攻略">
+  <title>目的地 · 地图优先型旅行攻略</title>
+  <style>
+    :root {
+      --paper: #edf3f5;
+      --surface: #f8fbfc;
+      --ink: #152a38;
+      --muted: #60747f;
+      --line: #b9cbd2;
+      --route: #e7653f;
+      --route-soft: #f7d8ce;
+      --water: #bfd9e4;
+      --green: #537b68;
+      --shadow: 0 18px 48px rgba(21, 42, 56, .10);
+      --display: "Songti SC", "STSong", "Noto Serif CJK SC", serif;
+      --body: "Microsoft YaHei", "PingFang SC", sans-serif;
+      --data: "Cascadia Mono", "SFMono-Regular", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--body);
+      line-height: 1.7;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    button, input, select, textarea { font: inherit; }
+
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(185, 203, 210, .85);
+      background: rgba(237, 243, 245, .92);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; min-height: 58px; gap: 20px; }
+    .brand { font-family: var(--data); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    .nav { display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; }
+    .nav a { text-decoration: none; color: var(--muted); }
+    .nav a:hover, .nav a:focus-visible { color: var(--route); }
+
+    .hero { padding: 72px 0 34px; }
+    .eyebrow { margin: 0 0 12px; color: var(--route); font-family: var(--data); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+    h1, h2, h3 { margin-top: 0; font-family: var(--display); font-weight: 600; line-height: 1.2; }
+    h1 { max-width: 800px; margin-bottom: 24px; font-size: clamp(44px, 8vw, 96px); letter-spacing: -.055em; }
+    h2 { font-size: clamp(30px, 4vw, 52px); letter-spacing: -.035em; }
+    h3 { font-size: 24px; }
+    .lede { max-width: 680px; color: var(--muted); font-size: 18px; }
+
+    .route-ribbon {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      background: var(--water);
+      box-shadow: var(--shadow);
+    }
+    .route-ribbon img { width: 100%; height: 390px; object-fit: cover; }
+    .map-empty { display: grid; min-height: 390px; place-items: center; padding: 40px; text-align: center; color: var(--muted); }
+    .route-line { position: absolute; left: 8%; right: 8%; bottom: 38px; height: 6px; background: var(--route); }
+    .route-line::before, .route-line::after { content: ""; position: absolute; top: 50%; width: 18px; height: 18px; border: 5px solid var(--surface); border-radius: 50%; background: var(--route); transform: translateY(-50%); }
+    .route-line::before { left: 0; }
+    .route-line::after { right: 0; }
+
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .fact { padding: 20px 18px; border-right: 1px solid var(--line); }
+    .fact:last-child { border-right: 0; }
+    .fact span { display: block; color: var(--muted); font-size: 12px; }
+    .fact strong { font-family: var(--data); font-size: 15px; font-weight: 500; }
+
+    section { padding: 76px 0; }
+    .section-head { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 30px; margin-bottom: 34px; }
+    .section-head p { margin: 0; color: var(--muted); }
+    .map-frame { min-height: 460px; background: var(--surface); box-shadow: var(--shadow); }
+    .map-frame img { width: 100%; height: 460px; object-fit: cover; }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-family: var(--data); font-size: 12px; }
+    .legend span::before { content: ""; display: inline-block; width: 24px; height: 4px; margin-right: 8px; vertical-align: middle; background: var(--route); }
+    .legend span:nth-child(2)::before { background: var(--green); }
+    .legend span:nth-child(3)::before { background: var(--ink); }
+
+    .decision-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .place { background: var(--surface); }
+    .place img, .image-empty { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #d7e3e7; }
+    .image-empty { display: grid; place-items: center; color: var(--muted); }
+    .place-body { padding: 22px; }
+    .place-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-family: var(--data); font-size: 11px; }
+    .place h3 { margin: 14px 0 8px; }
+    .status { color: var(--route); }
+
+    .days { display: grid; gap: 2px; }
+    .day-row { display: grid; grid-template-columns: 120px 1.2fr 1fr; gap: 28px; padding: 28px 0; border-top: 1px solid var(--line); }
+    .day-number { font-family: var(--data); color: var(--route); }
+    .day-route { font-size: 19px; }
+    .day-note { color: var(--muted); }
+
+    .day-detail { background: var(--surface); }
+    .timeline { display: grid; grid-template-columns: 100px 1fr; gap: 0 24px; }
+    .time { padding-top: 24px; border-right: 1px solid var(--line); font-family: var(--data); color: var(--route); }
+    .stop { position: relative; padding: 22px 0 34px; }
+    .stop::before { content: ""; position: absolute; left: -30px; top: 30px; width: 11px; height: 11px; border-radius: 50%; background: var(--route); }
+    .stop h3 { margin-bottom: 8px; }
+    .stop p { max-width: 720px; margin: 0; color: var(--muted); }
+    .notice { margin-top: 14px; padding: 12px 14px; border-left: 4px solid var(--route); background: var(--route-soft); font-size: 14px; }
+
+    footer { padding: 36px 0 70px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    :focus-visible { outline: 3px solid var(--route); outline-offset: 4px; }
+
+    @media (max-width: 820px) {
+      .shell { width: min(100% - 28px, 720px); }
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .hero { padding-top: 48px; }
+      .facts { grid-template-columns: 1fr 1fr; }
+      .fact:nth-child(2) { border-right: 0; }
+      .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .section-head, .decision-grid { grid-template-columns: 1fr; }
+      .day-row { grid-template-columns: 76px 1fr; }
+      .day-note { grid-column: 2; }
+      .route-ribbon, .route-ribbon img, .map-empty { min-height: 300px; height: 300px; }
+      .map-frame, .map-frame img { min-height: 330px; height: 330px; }
+    }
+
+    @media (max-width: 520px) {
+      h1 { font-size: 48px; }
+      section { padding: 56px 0; }
+      .nav { gap: 10px 14px; }
+      .facts { grid-template-columns: 1fr; }
+      .fact { border-right: 0; border-bottom: 1px solid var(--line); }
+      .fact:last-child { border-bottom: 0; }
+      .timeline { grid-template-columns: 70px 1fr; gap: 0 16px; }
+      .stop::before { left: -22px; }
+    }
+
+    @media print {
+      :root { --paper: #fff; --surface: #fff; }
+      .topbar { position: static; background: #fff; }
+      .nav { display: none; }
+      .shell { width: 100%; }
+      section { padding: 34px 0; }
+      .route-ribbon, .map-frame, .place { box-shadow: none; border: 1px solid var(--line); }
+      .place, .day-detail, .timeline, .map-frame { break-inside: avoid; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand">Laura Travel / 目的地</div>
+      <nav class="nav" aria-label="攻略导航">
+        <a href="#overview">路线总览</a>
+        <a href="#selection">景点筛选</a>
+        <a href="#days">每日安排</a>
+        <a href="#day-1">每日详情</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell" id="overview">
+      <p class="eyebrow">YYYY.MM.DD — YYYY.MM.DD · N DAYS</p>
+      <h1>目的地<br>路线攻略</h1>
+      <p class="lede">一句话写清这趟旅行最重要的体验和路线逻辑。这里不是宣传语，而是帮助旅行中快速判断取舍的行动原则。</p>
+    </section>
+
+    <div class="route-ribbon shell" aria-label="出发地到目的地路线图">
+      <!-- 替换为：<img src="maps/intercity-route.png" alt="出发地经换乘节点前往目的地的路线图"> -->
+      <div class="map-empty">阶段一：在此放置基于真实地理数据绘制的城际路线图</div>
+      <div class="route-line" aria-hidden="true"></div>
+    </div>
+
+    <div class="facts shell" aria-label="旅行概览">
+      <div class="fact"><span>出发地</span><strong>待填写</strong></div>
+      <div class="fact"><span>目的地</span><strong>待填写</strong></div>
+      <div class="fact"><span>旅行天数</span><strong>N DAYS</strong></div>
+      <div class="fact"><span>跨城交通</span><strong>待填写</strong></div>
+    </div>
+
+    <section class="shell">
+      <div class="section-head">
+        <div><p class="eyebrow">ROUTE ATLAS</p><h2>全部景点与分日路线</h2></div>
+        <p>地图优先展示景点空间关系。不同日期使用稳定的线路标识，正式版本应标注方向、比例、地点名称和必要换乘。</p>
+      </div>
+      <div class="map-frame">
+        <!-- 替换为：<img src="maps/trip-overview.png" alt="全部景点及分日路线总览图"> -->
+        <div class="map-empty">阶段三：在此放置全部景点与分日路线总览图</div>
+      </div>
+      <div class="legend" aria-label="路线图例"><span>Day 1</span><span>Day 2</span><span>Day 3</span></div>
+    </section>
+
+    <section class="shell" id="selection">
+      <div class="section-head">
+        <div><p class="eyebrow">PLACE DECISIONS</p><h2>景点筛选</h2></div>
+        <p>保留 10–15 个候选景点的决策依据。复制下方模块，并按必去经典、在地体验、机动备选排序。</p>
+      </div>
+      <div class="decision-grid">
+        <article class="place">
+          <!-- 替换为：<img src="images/place-01.jpg" alt="景点名称与画面内容"> -->
+          <div class="image-empty">景点图片</div>
+          <div class="place-body">
+            <div class="place-meta"><span>必去经典 · 片区</span><span class="status">保留</span></div>
+            <h3>景点名称</h3>
+            <p>写清亮点、适合 Laura 的原因，以及它与附近路线的关系。</p>
+            <div class="place-meta"><span>建议停留 90 分钟</span><span>预约：出发前复核</span></div>
+          </div>
+        </article>
+        <article class="place">
+          <div class="image-empty">景点图片</div>
+          <div class="place-body">
+            <div class="place-meta"><span>在地体验 · 片区</span><span class="status">备选</span></div>
+            <h3>景点名称</h3>
+            <p>说明体验方式、适合时段和与经典景点之间的取舍。</p>
+            <div class="place-meta"><span>建议停留 60 分钟</span><span>天气敏感</span></div>
+          </div>
+        </article>
+        <article class="place">
+          <div class="image-empty">景点图片</div>
+          <div class="place-body">
+            <div class="place-meta"><span>机动备选 · 片区</span><span class="status">雨天替代</span></div>
+            <h3>景点名称</h3>
+            <p>说明它能替代哪一个项目，以及临时加入时需要调整什么。</p>
+            <div class="place-meta"><span>建议停留 75 分钟</span><span>无需预约</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell" id="days">
+      <div class="section-head">
+        <div><p class="eyebrow">DAILY ROUTES</p><h2>每日路线总览</h2></div>
+        <p>每天默认 2–4 个核心点。行程过满时，必须在备注中标出优先删除的地点。</p>
+      </div>
+      <div class="days">
+        <article class="day-row"><div class="day-number">DAY 01</div><div class="day-route">地点 A → 地点 B → 地点 C</div><div class="day-note">适中强度 · 用餐区域 · 主要交通方式 · 机动 60 分钟</div></article>
+        <article class="day-row"><div class="day-number">DAY 02</div><div class="day-route">地点 D → 地点 E</div><div class="day-note">慢游日 · 天气敏感 · 雨天替代项目</div></article>
+        <article class="day-row"><div class="day-number">DAY 03</div><div class="day-route">地点 F → 地点 G → 地点 H</div><div class="day-note">较高强度 · 如需删减优先删除地点 H</div></article>
+      </div>
+    </section>
+
+    <section class="day-detail" id="day-1">
+      <div class="shell">
+        <div class="section-head">
+          <div><p class="eyebrow">DAY 01 · AREA NAME</p><h2>第一天路线标题</h2></div>
+          <p>当天路线逻辑、天气依赖和最重要的取舍提醒。</p>
+        </div>
+        <div class="map-frame">
+          <!-- 替换为：<img src="maps/day-01.png" alt="第一天从地点A到地点C的路线图"> -->
+          <div class="map-empty">阶段四：在此放置第一天真实路线图</div>
+        </div>
+        <div class="timeline" aria-label="第一天时间安排">
+          <div class="time">09:00</div><article class="stop"><h3>地点 A</h3><p>景点介绍、建议玩法、建议停留和与 Laura 的关联。</p><div class="notice"><strong>提醒：</strong>开放时间、预约或闭馆日，标注核验日期。</div></article>
+          <div class="time">11:00</div><article class="stop"><h3>地点 B</h3><p>说明从上一站如何抵达、预计交通时间，以及是否需要控制停留。</p></article>
+          <div class="time">12:30</div><article class="stop"><h3>用餐区域</h3><p>只推荐适合用餐的街区或片区，不默认指定具体餐厅。</p></article>
+          <div class="time">14:30</div><article class="stop"><h3>地点 C</h3><p>当天最后一个核心点；补充返回方式、机动时间和雨天替代。</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">信息核验日期：YYYY-MM-DD · 变动信息请查看 sources.csv · 未确认项目统一标记“出发前复核”</div>
+  </footer>
+</body>
+</html>

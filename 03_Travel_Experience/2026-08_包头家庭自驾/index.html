@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laura 与父母从呼和浩特到包头的两日家庭自驾攻略">
+  <title>呼和浩特—包头｜两日家庭自驾</title>
+  <style>
+    :root{--mist:#e9efed;--paper:#f8faf7;--ink:#15282d;--muted:#627277;--line:#b8c6c1;--road:#df5a32;--grass:#527761;--rock:#87928c;--warn:#fff0c9;--display:"STSong","Songti SC",serif;--body:"Microsoft YaHei","PingFang SC",sans-serif;--mono:"Cascadia Mono",monospace}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--body);line-height:1.7}img{display:block;width:100%;object-fit:cover}a{color:inherit}.wrap{width:min(1160px,calc(100% - 36px));margin:auto}.top{position:sticky;top:0;z-index:10;background:rgba(233,239,237,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.top .wrap{min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font:13px var(--mono);letter-spacing:.08em}.nav{display:flex;gap:18px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--muted);font-size:13px}.nav a:hover{color:var(--road)}
+    .hero{padding:68px 0 34px}.kicker{font:12px var(--mono);letter-spacing:.14em;color:var(--road);text-transform:uppercase}.hero h1{font:600 clamp(48px,9vw,104px)/.98 var(--display);letter-spacing:-.06em;margin:15px 0 22px}.hero p{max-width:720px;color:var(--muted);font-size:18px}.map-hero{position:relative;background:var(--paper);box-shadow:0 20px 50px rgba(21,40,45,.12)}.map-hero img{height:min(62vw,650px)}.map-caption{position:absolute;right:18px;bottom:18px;max-width:390px;background:rgba(21,40,45,.9);color:white;padding:14px 18px;font-size:13px}
+    .facts{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}.fact{padding:20px;border-right:1px solid var(--line)}.fact:last-child{border-right:0}.fact span{display:block;color:var(--muted);font-size:12px}.fact strong{font:500 15px var(--mono)}section{padding:72px 0}.section-head{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:32px;margin-bottom:32px}.section-head h2{font:600 clamp(34px,5vw,56px)/1.1 var(--display);letter-spacing:-.04em;margin:8px 0}.section-head p{color:var(--muted);margin:0}
+    .day{background:var(--paper);margin-bottom:28px}.day-head{display:grid;grid-template-columns:180px 1fr;padding:28px;border-bottom:1px solid var(--line)}.day-no{font:22px var(--mono);color:var(--road)}.day-head h3{font:600 30px var(--display);margin:0}.day-map img{height:min(55vw,560px)}.timeline{display:grid;grid-template-columns:105px 1fr;padding:12px 28px 30px}.time{font:14px var(--mono);color:var(--road);padding:22px 20px 22px 0;border-right:1px solid var(--line)}.stop{position:relative;padding:18px 0 22px 28px}.stop:before{content:"";position:absolute;left:-7px;top:29px;width:13px;height:13px;border-radius:50%;background:var(--road);box-shadow:0 0 0 5px var(--paper)}.stop h4{font:600 23px var(--display);margin:0 0 5px}.stop p{margin:0;color:var(--muted)}.note{margin-top:10px;padding:10px 13px;background:var(--warn);border-left:4px solid #d59d2e;font-size:14px}
+    .city-intro{display:grid;grid-template-columns:1.15fr .85fr;gap:1px;background:var(--line);border:1px solid var(--line)}.city-main,.city-side{background:var(--paper);padding:32px}.city-main .lead{font:600 clamp(25px,3vw,38px)/1.45 var(--display);margin:0 0 24px}.city-main p,.city-side p{color:var(--muted);margin:0 0 16px}.city-side h3{font:600 25px var(--display);margin:0 0 12px}.city-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.city-tags span{padding:5px 9px;background:var(--mist);font:12px var(--mono);color:var(--grass)}.places{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.place{background:var(--paper)}.place img{aspect-ratio:16/9}.place-body{padding:22px}.tag{font:11px var(--mono);color:var(--road);letter-spacing:.06em}.place h3{font:600 28px var(--display);margin:8px 0}.place p{color:var(--muted);margin:0}.check{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.check div{background:var(--paper);padding:18px}.check strong{display:block;margin-bottom:5px}.check span{color:var(--muted);font-size:14px}.alert{padding:20px 22px;background:#203b40;color:white;margin-top:24px}.alert strong{color:#ffc65c}.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{display:inline-block;padding:9px 14px;background:var(--ink);color:white;text-decoration:none;font-size:13px}.btn.alt{background:var(--grass)}footer{padding:35px 0 65px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+    @media(max-width:800px){.top .wrap{align-items:flex-start;flex-direction:column;padding:10px 0}.hero{padding-top:46px}.facts{grid-template-columns:1fr 1fr}.fact:nth-child(2){border-right:0}.section-head,.city-intro,.places{grid-template-columns:1fr}.day-head{grid-template-columns:1fr;gap:8px}.map-hero img,.day-map img{height:380px}.map-caption{position:static;max-width:none}.check{grid-template-columns:1fr}}
+    @media(max-width:520px){.wrap{width:calc(100% - 24px)}.hero h1{font-size:51px}.facts{grid-template-columns:1fr}.fact{border-right:0}.map-hero img,.day-map img{height:270px}.timeline{grid-template-columns:72px 1fr;padding:8px 14px 24px}.stop{padding-left:20px}.day-head{padding:20px}.nav{gap:10px 14px}section{padding:54px 0}}
+    @media print{.top{position:static}.nav{display:none}.wrap{width:100%}.map-hero,.day{box-shadow:none;break-inside:avoid}.day,.place,.check{break-inside:avoid}body{background:white}.map-hero img,.day-map img{height:360px}section{padding:35px 0}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="wrap"><div class="brand">LAURA TRAVEL / FAMILY ROAD TRIP</div><nav class="nav" aria-label="页面导航"><a href="#route">总路线</a><a href="#city">城市介绍</a><a href="#day1">第一天</a><a href="#day2">第二天</a><a href="#places">景点</a><a href="#check">出发检查</a></nav></div></header>
+  <main>
+    <div class="hero wrap"><div class="kicker">2026.08.22—08.23 · 3 PEOPLE · SELF-DRIVE</div><h1>阴山脚下<br>两日自驾</h1><p>第一天从呼和浩特自驾到包头，依次游览北方兵器城和赛汗塔拉城中草原；第二天从青山区出发，沿石拐方向游览包头古城、赵北长城遗址和五当召，随后返回呼和浩特。</p></div>
+    <div class="map-hero wrap" id="route"><img src="maps/trip-overview.jpg" alt="呼和浩特至包头两日自驾路线总览"><div class="map-caption">橙线表示游览顺序，不代表导航道路。每段驾驶前重新打开实时导航；五当召雨后路况优先服从现场提示。</div></div>
+    <div class="facts wrap"><div class="fact"><span>出发</span><strong>08/22 10:30</strong></div><div class="fact"><span>同行</span><strong>LAURA + 父母</strong></div><div class="fact"><span>核心景点</span><strong>5 个</strong></div><div class="fact"><span>住宿</span><strong>青山区附近</strong></div></div>
+
+    <section class="wrap" id="city"><div class="section-head"><div><div class="kicker">ABOUT BAOTOU</div><h2>认识包头</h2></div><p>一座夹在阴山与黄河之间，同时拥有草原、边塞历史和重工业气质的城市。</p></div>
+      <div class="city-intro"><div class="city-main"><p class="lead">包头位于内蒙古中西部，北依阴山、南临黄河，是连接土默川平原、河套地区与中国西北的重要节点。</p><p>这片区域很早就是农耕、游牧与商贸往来的交汇地。战国时期赵国沿阴山修筑赵北长城，留下胡服骑射与北方边防的历史线索；近代“走西口”移民带来晋商文化和新的聚落生活，逐渐形成老包头的市井底色。五当召所在的阴山山谷，又保存了藏传佛教在内蒙古传播、教育与地方社会中的重要历史。</p><p>进入现代以后，钢铁、稀土和装备制造成为包头最鲜明的城市产业。大型工业建设改变了城市空间，也塑造了包头务实、开阔而带有机械力量感的气质，因此包头常被称为“草原钢城”和“稀土之都”。</p><div class="city-tags"><span>阴山</span><span>黄河</span><span>草原钢城</span><span>稀土之都</span><span>走西口</span><span>赵北长城</span></div></div><aside class="city-side"><h3>这次路线如何读懂包头</h3><p><strong>北方兵器城</strong>代表包头的装备制造与军工工业。</p><p><strong>赛汗塔拉</strong>展示草原、湿地和现代城区共存的城市空间。</p><p><strong>包头古城</strong>以复原场景呈现走西口移民和老包头生活。</p><p><strong>赵北长城</strong>连接阴山地理、胡服骑射和边塞历史。</p><p><strong>五当召</strong>补上宗教建筑、蒙古高原交流和地方文化的一面。</p></aside></div>
+    </section>
+
+    <section class="wrap" id="day1"><div class="section-head"><div><div class="kicker">DAY 01 · 青山区集中游</div><h2>钢铁记忆，落日草原</h2></div><p>今天有小雨预报。兵器城按正常计划执行；赛汗塔拉根据短临降雨缩短，不把昆都仑河湿地当夜游补位。</p></div>
+      <article class="day"><div class="day-head"><div class="day-no">DAY 01</div><h3>北方兵器城 → 赛汗塔拉</h3></div><div class="day-map"><img src="maps/day-01.jpg" alt="第一天北方兵器城与赛汗塔拉之间的局部路线关系图"></div><div class="timeline">
+        <div class="time">10:30</div><div class="stop"><h4>从呼和浩特出发</h4><p>经G6前往包头，正常约2–2.5小时。由非驾驶者途中预订青山区或赛汗塔拉附近、停车方便的酒店。</p></div>
+        <div class="time">13:00</div><div class="stop"><h4>青山区午餐</h4><p>控制在45–60分钟，避免空腹进入兵器城。</p></div>
+        <div class="time">14:00</div><div class="stop"><h4>北方兵器城</h4><p>预计2–2.5小时，重点看火炮、装甲车辆与军工历史。当前参考18:30停止入园、19:00闭园。</p></div>
+        <div class="time">16:40</div><div class="stop"><h4>赛汗塔拉城中草原</h4><p>天气允许时游览至19:00，以短距离散步、城市与草原同框观景为主，不走完整环线。</p><div class="note"><strong>雨天：</strong>小雨缩短至30–60分钟；持续降雨则直接晚餐、入住。昆都仑河湿地只有在天黑前、天气转好时才可替代，绝不作为夜间赶场。</div></div>
+      </div></article>
+    </section>
+
+    <section class="wrap" id="day2"><div class="section-head"><div><div class="kicker">DAY 02 · 石拐文化线</div><h2>从西口记忆，到阴山古刹</h2></div><p>赵长城必须选择石拐区胡服骑射广场或五当召公路沿线遗址，不要导航到昆都仑区110国道旁的遗址公园。</p></div>
+      <article class="day"><div class="day-head"><div class="day-no">DAY 02</div><h3>包头古城 → 赵北长城 → 五当召</h3></div><div class="day-map"><img src="maps/day-02.jpg" alt="第二天包头古城、胡服骑射广场与五当召之间的局部路线关系图"></div><div class="timeline">
+        <div class="time">07:30</div><div class="stop"><h4>早餐、退房</h4><p>08:00前出发，提前确认五当召道路与当日开放情况。</p></div>
+        <div class="time">08:40</div><div class="stop"><h4>包头古城</h4><p>控制在60–80分钟。它是复原型民俗文化旅游区，不是真正保存下来的古城遗址；若现场内容吸引力一般，30–45分钟即可离开。</p></div>
+        <div class="time">10:30</div><div class="stop"><h4>赵北长城短停</h4><p>选择石拐区胡服骑射广场/五当召沿线遗址，停留约40分钟，以历史说明和远观遗址为主，不进行雨后长距离爬坡。</p></div>
+        <div class="time">11:15</div><div class="stop"><h4>前往五当召、途中午餐</h4><p>如沿线餐饮选择较少，可准备车内简餐；不要因找餐厅耽误入园。</p></div>
+        <div class="time">12:30</div><div class="stop"><h4>五当召</h4><p>游览至约16:00，重点看依山布局、殿宇建筑和藏传佛教文化。父母体力较好，但殿宇之间仍分段休息。</p><div class="note"><strong>道路：</strong>景区道路历史上存在施工与地质风险，雨后以实时导航、交通管制和现场提示为准。</div></div>
+        <div class="time">16:00</div><div class="stop"><h4>返回呼和浩特</h4><p>五当召需先向南回到高速方向，并非从景区直接向东。途中每约2小时休息一次。</p></div>
+      </div></article>
+    </section>
+
+    <section class="wrap" id="places"><div class="section-head"><div><div class="kicker">PLACE NOTES</div><h2>景点介绍与游览重点</h2></div><p>结合景点背景、主要看点、建议停留和本次行程中的取舍，快速了解每一站。</p></div><div class="places">
+      <article class="place"><img src="images/northern-weapons-city.jpg" alt="北方兵器城入口"><div class="place-body"><div class="tag">DAY 1 · 核心 · 约2—2.5小时</div><h3>北方兵器城</h3><p>北方兵器城位于青山区，是以国防工业和军工文化为主题的露天展览景区，也是认识包头“草原钢城”身份最直接的一站。园内集中展示坦克、装甲车辆、火炮、导弹和飞机等退役装备，其中包括与新中国军工发展相关的代表性展品。游览时不必逐件细看，可以重点关注共和国早期火炮、功勋炮、装甲车辆及吴运铎纪念内容。景区面积较大且以露天区域为主，雨天应注意湿滑，并预留父母途中休息的时间。</p></div></article>
+      <article class="place"><img src="images/saihantala.png" alt="赛汗塔拉城中草原步道与城市景观"><div class="place-body"><div class="tag">DAY 1 · 天气敏感 · 约1—2小时</div><h3>赛汗塔拉城中草原</h3><p>赛汗塔拉蒙古语意为“美丽的草原”，大片草原、林地和湿地被完整保留在包头城区之中，是城市建筑与草原景观并置的代表性空间。园区范围很大，本次不建议追求走完环线；从方便停车的入口进入，选择草原视野、湿地步道或城市天际线较好的区域即可。傍晚光线更适合观景，但停留时间必须服从降雨：天气稳定可慢游约2小时，小雨则缩短到30—60分钟。</p></div></article>
+      <article class="place"><img src="images/baotou-ancient-city.jpg" alt="包头古城入口"><div class="place-body"><div class="tag">DAY 2 · 可删减 · 约45—80分钟</div><h3>包头古城</h3><p>包头古城并非原址保存的古代城池，而是以老包头、西口移民和塞外农耕生活为主题建设的文化旅游区。园内通过城门、民俗街巷、传统手工作坊和生活场景，复原晋商移民及老包头的市井记忆。它的价值主要在于理解包头从边地聚落到近现代城市的生活文化，而不是观看古建筑遗存。建议把它作为第二天的轻松开场；若现场商铺或演出较少，可缩短停留，把时间留给五当召。</p></div></article>
+      <article class="place"><img src="images/zhao-great-wall.jpg" alt="包头赵北长城遗址纪念雕塑"><div class="place-body"><div class="tag">DAY 2 · 历史短停 · 约30—45分钟</div><h3>赵北长城遗址</h3><p>包头境内的赵北长城修筑于战国时期，与赵武灵王推行胡服骑射、向阴山一线拓展密切相关，是中国北方较早的长城体系之一。如今遗址多为沿山势延伸的夯土或石土墙体，不会呈现明代砖石长城的高大城墙形态。本次应选择石拐区胡服骑射广场或五当召公路沿线遗址，通过雕塑、碑刻和残存墙体理解阴山防线；以短停为主，雨后不沿山脊长距离徒步。</p></div></article>
+      <article class="place"><img src="images/wudangzhao.jpg" alt="五当召寺院入口"><div class="place-body"><div class="tag">DAY 2 · 核心 · 约3—3.5小时</div><h3>五当召</h3><p>五当召位于阴山深处，是内蒙古现存规模较大、保存较完整的藏传佛教格鲁派寺院，汉名“广觉寺”。寺院没有严格统一的中轴线，多组白色殿宇顺应山谷和坡地分布，形成层层抬升的藏式建筑群。游览重点包括寺院的依山布局、殿堂壁画、佛教造像、经幡与转经空间，也应留意它曾经兼具宗教教育和地方社会管理功能的历史。参观时保持安静，遵守殿内拍摄规定；父母体力虽好，仍建议在殿宇之间分段休息。</p></div></article>
+    </div></section>
+
+    <section class="wrap" id="check"><div class="section-head"><div><div class="kicker">LEAVE READY</div><h2>出发前十分钟</h2></div><p>这部分比再加一个景点更重要。</p></div><div class="check">
+      <div><strong>证件</strong><span>三人身份证、驾驶证、行驶证；老人优惠通常需要原件。</span></div><div><strong>车辆</strong><span>油量、胎压、雨刷、玻璃水；高速前完成检查。</span></div><div><strong>衣物</strong><span>雨具、防滑鞋、薄外套；山区与夜间温度更低。</span></div><div><strong>补给</strong><span>饮水、纸巾、简单零食；第二天提前准备午餐备选。</span></div><div><strong>电话复核</strong><span>兵器城 0472-3303120/3303121；五当召 0472-8715022/8711568。</span></div><div><strong>实时信息</strong><span>每段重新导航；查看短临降雨和五当召道路提示。</span></div>
+    </div><div class="alert"><strong>导航避坑：</strong>不要选择坐标约 40.715463, 109.801417 的“昆都仑战国赵北长城遗址公园”。本次应选择石拐区胡服骑射广场或五当召公路沿线遗址。</div><div class="links"><a class="btn" href="trip-brief.md">查看启动表</a><a class="btn alt" href="qa-checklist.md">打开检查清单</a><a class="btn" href="sources.csv">查看信息来源</a></div></section>
+  </main>
+  <footer><div class="wrap">信息核验日期：2026-08-22 · 地图 © OpenStreetMap contributors · 路线图仅表示地点与行程顺序，驾驶必须使用实时导航。</div></footer>
+</body>
+</html>
